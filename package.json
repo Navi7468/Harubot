@@ -18,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/Navi7468/Harubot/issues"
   },
-  "homepage": "https://github.com/Navi7468/Harubot#readme"
+  "homepage": "https://github.com/Navi7468/Harubot#readme",
+  "dependencies": {
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "fs": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }

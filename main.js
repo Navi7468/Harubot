@@ -1,4 +1,6 @@
 const { Client, Collection, GatewayIntentBits, Partials } = require('discord.js');
+const tmi = require('tmi.js');
+
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -24,11 +26,28 @@ const client = new Client({
     ]
 });
 
-require('dotenv').config();
+const twitch = new tmi.Client({
+    channels: ['Navi7468', 'harusaur']
+});
 
-// client.on('ready', () => {
-//     console.log('HaruBot is ready!');
-// });
+twitch.connect();
+
+twitch.on('message', (channel, tags, message, self) => {
+    //  'first-msg': true,
+    if (self || tags.username == "streamelements") return;
+    console.log(tags.username + ': ' + message);
+    const args = message.split(/ +/);
+    console.log(args);
+});
+
+twitch.on('chat', (channel, userstate, message, self) => {
+    // console.log(userstate);
+    // console.log(message);
+});
+
+
+
+require('dotenv').config();
 
 client.commands = new Collection();
 client.events = new Collection();
